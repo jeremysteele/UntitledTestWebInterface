@@ -65,12 +65,40 @@
 			background-color: #ccc;
 			font: 700 12px Arial,sans-serif;
 		}
+
+		label {
+			float: left;
+			padding: 3px 5px;
+			margin-right: 10px;
+			width: 80px;
+			text-align: right;
+		}
+
+		input[type=text] {
+			height: 20px;
+			width: 150px;
+			padding: 3px 5px;
+			margin-top: 3px;
+			border: 1px solid #000;
+			font: normal 12px Arial,sans-serif;
+			float: left;
+		}
 	</style>
 	<body>
 		<div class="window" style="top: 50px; left: 50px; width: 400px;height: 300px;">
-			<div class="titlebar">Save "Your Project"</div>
+			<div class="titlebar">Save "New Person"</div>
 
 			<div class="content">
+				<div class="group" style="top: 20px; left: 20px; width: 300px;">
+					<label for="f_name">First Name</label>
+					<input name="f_name" id="f_name" type="text" />
+				</div>
+
+				<div class="group" style="top: 50px; left: 20px; width: 300px;">
+					<label for="l_name">Last Name</label>
+					<input name="l_name" id="l_name" type="text" />
+				</div>
+
 				<div class="group" style="top: 225px; left: 155px">
 					<button class="default" style="position: absolute; top: 0; left: 125px;">Save</button>
 

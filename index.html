@@ -1,0 +1,82 @@
+<html>
+	<head>
+		<title>Save Dialog</title>
+	</head>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			user-select: none;
+		}
+
+		button {
+			padding: 5px 8px;
+			font: 700 12px Arial,sans-serif;
+			background-color: #dedede;
+			border: solid 1px #dedede;
+			color: #000;
+			border-radius: 3px;
+			min-width: 100px;
+			box-shadow: 0 0 0 2px #ababab, 0 0 0 3px #000;
+		}
+
+		button.default {
+			box-shadow: 0 0 0 2px #ababab, 0 0 0 3px #000, 0 0 0 6px #ababab, 0 0 0 7px #000;
+		}
+
+
+		button:active {
+			background-color: #bababa;
+			border: solid 1px #bababa;
+		}
+
+		button:focus {
+			outline: none;
+		}
+
+		.window {
+			background-color: #dedede;
+			border-right: solid 2px #ababab;
+			border-bottom: solid 2px #ababab;
+			border-left: solid 2px #ddd;
+			border-top: solid 2px #ddd;
+			outline: solid 1px #000;
+			box-shadow: 3px 3px #000;
+			position: relative;
+			box-sizing: border-box;
+			height: auto;
+		}
+
+		.content {
+			position: absolute;
+			top: 30px;
+			left: 0;
+		}
+
+		.group {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		.titlebar {
+			padding: 7px 8px;
+			text-align: center;
+			background-color: #ccc;
+			font: 700 12px Arial,sans-serif;
+		}
+	</style>
+	<body>
+		<div class="window" style="top: 50px; left: 50px; width: 400px;height: 300px;">
+			<div class="titlebar">Save "Your Project"</div>
+
+			<div class="content">
+				<div class="group" style="top: 225px; left: 155px">
+					<button class="default" style="position: absolute; top: 0; left: 125px;">Save</button>
+
+					<button style="position: absolute; top: 0; left: 0;">Cancel</button>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>  

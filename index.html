@@ -1,94 +1,103 @@
 <html>
 	<head>
 		<title>Save Dialog</title>
+
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				user-select: none;
+			}
+	
+			body {
+				font: normal 12px Arial,normal;
+			}
+	
+			button {
+				padding: 5px 8px;
+				font: 700 12px Arial,sans-serif;
+				background-color: #dedede;
+				border: solid 1px #dedede;
+				color: #000;
+				border-radius: 3px;
+				min-width: 100px;
+				box-shadow: 0 0 0 2px #ababab, 0 0 0 3px #000;
+				cursor: pointer;
+			}
+	
+			button.default {
+				box-shadow: 0 0 0 2px #ababab, 0 0 0 3px #000, 0 0 0 6px #ababab, 0 0 0 7px #000;
+			}
+	
+	
+			button:active {
+				background-color: #bababa;
+				border: solid 1px #bababa;
+			}
+	
+			button:focus {
+				outline: none;
+			}
+	
+			.window {
+				background-color: #dedede;
+				border-right: solid 2px #ababab;
+				border-bottom: solid 2px #ababab;
+				border-left: solid 2px #ddd;
+				border-top: solid 2px #ddd;
+				outline: solid 1px #000;
+				box-shadow: 3px 3px #000;
+				position: relative;
+				box-sizing: border-box;
+				height: auto;
+				overflow: hidden;
+			}
+	
+			.content {
+				position: absolute;
+				top: 30px;
+				left: 0;
+			}
+	
+			.group {
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+	
+			.titlebar {
+				padding: 7px 8px;
+				text-align: center;
+				background-color: #ccc;
+				font: 700 12px Arial,sans-serif;
+			}
+	
+			label {
+				float: left;
+				padding: 6px 5px;
+				margin-right: 10px;
+				width: 80px;
+				text-align: right;
+			}
+	
+			input[type=text] {
+				height: 20px;
+				width: 150px;
+				padding: 3px 5px;
+				margin-top: 3px;
+				border: 1px solid #000;
+				font: normal 12px Arial,sans-serif;
+				float: left;
+			}
+		</style>
+
+		
 	</head>
-	<style>
-		* {
-			margin: 0;
-			padding: 0;
-			user-select: none;
-		}
-
-		button {
-			padding: 5px 8px;
-			font: 700 12px Arial,sans-serif;
-			background-color: #dedede;
-			border: solid 1px #dedede;
-			color: #000;
-			border-radius: 3px;
-			min-width: 100px;
-			box-shadow: 0 0 0 2px #ababab, 0 0 0 3px #000;
-		}
-
-		button.default {
-			box-shadow: 0 0 0 2px #ababab, 0 0 0 3px #000, 0 0 0 6px #ababab, 0 0 0 7px #000;
-		}
-
-
-		button:active {
-			background-color: #bababa;
-			border: solid 1px #bababa;
-		}
-
-		button:focus {
-			outline: none;
-		}
-
-		.window {
-			background-color: #dedede;
-			border-right: solid 2px #ababab;
-			border-bottom: solid 2px #ababab;
-			border-left: solid 2px #ddd;
-			border-top: solid 2px #ddd;
-			outline: solid 1px #000;
-			box-shadow: 3px 3px #000;
-			position: relative;
-			box-sizing: border-box;
-			height: auto;
-		}
-
-		.content {
-			position: absolute;
-			top: 30px;
-			left: 0;
-		}
-
-		.group {
-			position: absolute;
-			top: 0;
-			left: 0;
-		}
-
-		.titlebar {
-			padding: 7px 8px;
-			text-align: center;
-			background-color: #ccc;
-			font: 700 12px Arial,sans-serif;
-		}
-
-		label {
-			float: left;
-			padding: 3px 5px;
-			margin-right: 10px;
-			width: 80px;
-			text-align: right;
-		}
-
-		input[type=text] {
-			height: 20px;
-			width: 150px;
-			padding: 3px 5px;
-			margin-top: 3px;
-			border: 1px solid #000;
-			font: normal 12px Arial,sans-serif;
-			float: left;
-		}
-	</style>
 	<body>
 		<div class="window" style="top: 50px; left: 50px; width: 400px;height: 300px;">
 			<div class="titlebar">Save "New Person"</div>
 
-			<div class="content">
+			<div class="content" style="width: 400px; height: 270px;">
 				<div class="group" style="top: 20px; left: 20px; width: 300px;">
 					<label for="f_name">First Name</label>
 					<input name="f_name" id="f_name" type="text" />
@@ -99,12 +108,55 @@
 					<input name="l_name" id="l_name" type="text" />
 				</div>
 
-				<div class="group" style="top: 225px; left: 155px">
-					<button class="default" style="position: absolute; top: 0; left: 125px;">Save</button>
+				<div class="group" style="bottom: 25px; right: 25px">
+					<button class="default" style="position: absolute; bottom: 0; right: 0;">Save</button>
 
-					<button style="position: absolute; top: 0; left: 0;">Cancel</button>
+					<button style="position: absolute; bottom: 0; right: 125px;">Cancel</button>
 				</div>
 			</div>
 		</div>
+
+		<script>
+			// Make the DIV element draggable:
+			dragElement(document.getElementsByClassName("window")[0]);
+
+			function dragElement(elmnt) {
+				var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+
+				console.log(elmnt);
+
+				elmnt.getElementsByClassName("titlebar")[0].onmousedown = dragMouseDown;
+
+				function dragMouseDown(e) {
+					e = e || window.event;
+					e.preventDefault();
+					// get the mouse cursor position at startup:
+					pos3 = e.clientX;
+					pos4 = e.clientY;
+					document.onmouseup = closeDragElement;
+					// call a function whenever the cursor moves:
+					document.onmousemove = elementDrag;
+				}
+
+				function elementDrag(e) {
+					e = e || window.event;
+					e.preventDefault();
+					// calculate the new cursor position:
+					pos1 = pos3 - e.clientX;
+					pos2 = pos4 - e.clientY;
+					pos3 = e.clientX;
+					pos4 = e.clientY;
+					// set the element's new position:
+					elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+					elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+				}
+
+				function closeDragElement() {
+					// stop moving when mouse button is released:
+					document.onmouseup = null;
+					document.onmousemove = null;
+				}
+			}
+		</script>
 	</body>
 </html>  
